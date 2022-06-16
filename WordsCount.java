@@ -2,10 +2,10 @@ import java.io.*;
 import java.util.*;
 
 public class WordsCount {
-    private static final String FILE_PATH = "C:\\Users\\Yevhen\\IdeaProjects\\goit-java-hw-10\\src\\main\\resources\\words.txt";
+    private static final File FILE_PATH = new File("src" + File.separator + "main" + File.separator + "resources" + File.separator + "words.txt");
 
     public static void count() {
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(FILE_PATH))) {
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(FILE_PATH.getAbsolutePath()))) {
             int c;
             String strings = "";
 
@@ -13,7 +13,7 @@ public class WordsCount {
                 strings += (char) c;
             }
 
-            String[] l = strings.split("\r\n");
+            String[] l = strings.split(System.lineSeparator());
             String li = "";
             for (int i = 0; i < l.length; i++) {
                 li += l[i] + " ";
