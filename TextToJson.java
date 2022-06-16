@@ -34,7 +34,7 @@ public class TextToJson {
             for (int i = 0; i < userList.size(); i++) {
                 user[i] = gson.toJson(userList.get(i));
             }
-//            System.out.println(Arrays.toString(user));
+            
             bufferedWriter.write(Arrays.toString(user));
             bufferedWriter.flush();
         } catch (IOException e) {
