@@ -15,27 +15,24 @@ public class WordsCount {
 
             String[] l = strings.split(System.lineSeparator());
             String li = "";
-            for (int i = 0; i < l.length; i++) {
-                li += l[i] + " ";
+            for (String s : l) {
+                li += s + " ";
             }
 
             String[] list = li.split(" ");
             Map<String, Integer> wordsCount = new HashMap<>();
             ArrayList<String> words = new ArrayList<>(Arrays.asList(list));
 
-            for (int i = 0; i < words.size(); i++) {
-                String tempStr = words.get(i);
-
+            for (String tempStr : words) {
                 if (!wordsCount.containsKey(tempStr)) {
                     wordsCount.put(tempStr, 1);
                 } else {
                     wordsCount.put(tempStr, wordsCount.get(tempStr) + 1);
                 }
             }
-
-            for (Map.Entry<String, Integer> entry : wordsCount.entrySet()) {
-                System.out.println(entry.getKey() + " " + entry.getValue());
-            }
+            wordsCount.entrySet().stream()
+                    .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                    .forEach(entry -> System.out.println(entry.getKey() + " " + entry.getValue()));
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
