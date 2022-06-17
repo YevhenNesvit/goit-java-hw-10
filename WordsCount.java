@@ -30,6 +30,7 @@ public class WordsCount {
                     wordsCount.put(tempStr, wordsCount.get(tempStr) + 1);
                 }
             }
+            
             wordsCount.entrySet().stream()
                     .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
                     .forEach(entry -> System.out.println(entry.getKey() + " " + entry.getValue()));
